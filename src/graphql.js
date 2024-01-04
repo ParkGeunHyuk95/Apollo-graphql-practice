@@ -34,4 +34,15 @@ const GET_LOCATION_BY_ID = gql`
     }
 `;
 
-export { GET_LOCATIONS_ID, GET_LOCATIONS_NAME, GET_LOCATIONS_DESC, GET_LOCATION_BY_ID };
+const ADD_LOCATION = gql`
+    mutation AddLocation($type: String!, $name: String!, $description: String!) {
+        addLocation(type: $type, name: $name, description: $description) {
+            id
+            type
+            name
+            description
+        }
+    }
+`;
+
+export { GET_LOCATIONS_ID, GET_LOCATIONS_NAME, GET_LOCATIONS_DESC, GET_LOCATION_BY_ID, ADD_LOCATION };

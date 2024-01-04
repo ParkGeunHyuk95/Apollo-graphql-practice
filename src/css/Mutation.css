@@ -1,0 +1,41 @@
+.mutation-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.mutation-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.mutation-input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mutation-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mutation-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-heading {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
