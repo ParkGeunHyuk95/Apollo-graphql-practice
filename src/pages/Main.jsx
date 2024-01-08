@@ -1,4 +1,3 @@
-import '../App.css';
 import { useEffect } from 'react';
 import { useGetLocationById, useGetLocationsId, useGetLocationsName } from '../hooks/location';
 import { useNavigate } from 'react-router-dom';

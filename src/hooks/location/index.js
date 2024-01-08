@@ -1,5 +1,5 @@
-import { useLazyQuery, useQuery } from '@apollo/client';
-import { GET_LOCATIONS_ID, GET_LOCATIONS_NAME, GET_LOCATION_BY_ID } from '../../graphql';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import { ADD_LOCATION, DELETE_LOCATION, GET_LOCATIONS_ID, GET_LOCATIONS_NAME, GET_LOCATION_BY_ID } from '../../graphql';
 
 const useGetLocationsId = () => {
     return useQuery(GET_LOCATIONS_ID);
@@ -13,4 +13,23 @@ const useGetLocationById = (id) => {
     });
 };
 
-export { useGetLocationsId, useGetLocationsName, useGetLocationById };
+//mutation
+const useAddLocation = (type, name, description) => {
+    return useMutation(ADD_LOCATION, {
+        variables: {
+            type,
+            name,
+            description,
+        },
+    });
+};
+
+const useDeleteLocation = (id) => {
+    return useMutation(DELETE_LOCATION, {
+        variables: {
+            id,
+        },
+    });
+};
+
+export { useGetLocationsId, useGetLocationsName, useGetLocationById, useAddLocation, useDeleteLocation };

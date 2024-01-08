@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useAddLocation } from '../hooks/todolist';
-import { useGetLocationsId, useGetLocationsName } from '../hooks/location';
+
+import { useAddLocation, useDeleteLocation, useGetLocationsId, useGetLocationsName } from '../hooks/location';
 import '../css/Mutation.css';
 const MutationTest = () => {
     const [addLocation, { loading: addLocationLoading, error: addLocationError, data: addLocationData }] =
         useAddLocation();
+    const [deleteLocation, { loading: deleteLocationLoading, error: deleteLocationError, data: deleteLocationData }] =
+        useDeleteLocation();
 
     const [type, setType] = useState('');
     const [name, setName] = useState('');
@@ -83,17 +85,28 @@ const MutationTest = () => {
 
             <ul className='mutation-list'>
                 <li>
-                    <p className='list-heading'>Locations by ID:</p>
+                    <p className='list-heading'>Locations Id</p>
                     <ul>
                         {locationsId.map((location) => (
                             <li key={location.id}>
                                 {location.id} - {location.type}
+                                <button
+                                    onClick={() => {
+                                        deleteLocation({
+                                            variables: {
+                                                id: location.id,
+                                            },
+                                        });
+                                    }}
+                                >
+                                    Delete
+                                </button>
                             </li>
                         ))}
                     </ul>
                 </li>
                 <li>
-                    <p className='list-heading'>Locations by Name:</p>
+                    <p className='list-heading'>Locations Name:</p>
                     <ul>
                         {locationsName.map((location) => (
                             <li key={location.id}>

@@ -1,5 +1,3 @@
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
-import './App.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Main from './pages/Main';
 import TestVariable from './pages/TestVariable';
@@ -12,7 +10,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Main />} />
                     <Route path='/test' element={<TestVariable />} />
-                    <Route path='/todo' element={<MutationTest />} />
+                    <Route path='/mutation-test' element={<MutationTest />} />
                 </Routes>
             </BrowserRouter>
         </div>
