@@ -32,18 +32,33 @@ const MutationTest = () => {
     };
 
     useEffect(() => {
-        console.log(addLocationData);
+        getLocationsName();
+    }, []);
+
+    useEffect(() => {
+        if (!addLocationData) {
+            return;
+        }
         fetchLocationsName().then(() => {
             console.log('Locations Name fetched');
         });
     }, [addLocationData]);
 
+    useEffect(() => {
+        if (!deleteLocationData) {
+            return;
+        }
+        fetchLocationsName().then(() => {
+            console.log('Locations Name fetched');
+        });
+    }, [deleteLocationData]);
+
     if (getLocationsIdLoading || getLocationsNameLoading) return <p>Loading...</p>;
     if (getLocationsIdError || getLocationsNameError)
         return <p>Error: {getLocationsIdError.message || getLocationsNameError.message}</p>;
 
-    const locationsId = getLocationsIdData.locations;
-    const locationsName = getLocationsNameData.locations;
+    const locationsId = getLocationsIdData?.locations;
+    const locationsName = getLocationsNameData?.locations;
 
     return (
         <div className='mutation-container'>
@@ -87,7 +102,7 @@ const MutationTest = () => {
                 <li>
                     <p className='list-heading'>Locations Id</p>
                     <ul>
-                        {locationsId.map((location) => (
+                        {locationsId?.map((location) => (
                             <li key={location.id}>
                                 {location.id} - {location.type}
                                 <button
@@ -108,7 +123,7 @@ const MutationTest = () => {
                 <li>
                     <p className='list-heading'>Locations Name:</p>
                     <ul>
-                        {locationsName.map((location) => (
+                        {locationsName?.map((location) => (
                             <li key={location.id}>
                                 {location.name} - {location.type}
                             </li>
